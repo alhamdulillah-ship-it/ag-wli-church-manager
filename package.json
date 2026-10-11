@@ -1,0 +1,24 @@
+{
+  "name": "ag-wli-offline-church-manager",
+  "version": "1.0.1",
+  "description": "Offline church management system for Assemblies of God, Wli, with GitHub Releases updates",
+  "main": "main.js",
+  "author": "Assemblies of God, Wli",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "release": "electron-builder --win nsis --publish always"
+  },
+  "dependencies": { "electron-updater": "^6.6.2" },
+  "devDependencies": { "electron": "^37.2.0", "electron-builder": "^26.0.12" },
+  "build": {
+    "appId": "gh.org.assembliesofgod.wli.offline",
+    "productName": "AG Wli Offline Church Manager",
+    "directories": { "output": "release" },
+    "files": ["main.js", "preload.js", "index.html", "package.json"],
+    "publish": [{ "provider": "github", "owner": "alhamdulillah-ship-it", "repo": "ag-wli-church-manager" }],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true }
+  }
+}
